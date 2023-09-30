@@ -1,7 +1,7 @@
 .App {
   background-color: #93CFDC;
-  border: solid transparent;
   height: 100vh;
+  font-family: 'Roboto', sans-serif;
 }
 .header{
   height: 20vh;
@@ -47,4 +47,35 @@
 .content{
   background-color: #FFFFFF;
   height: 80vh;
+  overflow-y: auto;
+}
+.analytics{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 70vh;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+.analytics-chart{
+  height: 80%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.analytics-info{
+  height: 50%;
+  width: 40%;
+  text-align: center;
+}
+.analytics-info-text{
+  font-size: 5em;
+}
+.analytics-info-dropdown{
+  height: 2em;
+  width: 80%;
+  text-align: center;
+  margin-top: 1em;
+  font-size: 1.5em;
 }
