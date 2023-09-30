@@ -1,6 +1,7 @@
 import './App.css';
 import {useState} from 'react';
-import LineChartWithData from './pages/analytics.js'
+import Analytics from './pages/analytics.js';
+import Berth from './pages/berth.js';
 
 function App() {
   const [activeTab, setActiveTab] = useState("Analytics");
@@ -12,7 +13,8 @@ function App() {
         <div className = {activeTab==="Equipment"? "tab-active" : "tab"} onClick={()=>setActiveTab("Equipment")}>Equipment</div>
       </div>
       <div className = "content">
-        <LineChartWithData/>
+        {activeTab === "Analytics" ? <Analytics/> : null }
+        {activeTab === "Berth" ? <Berth/> : null }
       </div>
     </div>
   );

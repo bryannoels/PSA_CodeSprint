@@ -79,3 +79,115 @@
   margin-top: 1em;
   font-size: 1.5em;
 }
+
+/*berth*/
+.berth{
+  display: flex;
+  justify-content: space-around;
+  height: 70vh;
+  overflow-y: auto;
+  padding-top: 5%;
+}
+.berth-table{
+  border: solid black;
+  border-radius: 20px;
+  width: 80%;
+  height: 90%;
+}
+.berth-table-header{
+  background-color: #93CFDC;
+  display: flex;
+  align-items: center;
+  height: 70px;
+  font-size: 2em;
+  font-weight: bold;
+  padding-left: 5%;
+  padding-right: 5%;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+.berth-table-content{
+  overflow-y: auto;
+  height: calc(100% - 70px);
+}
+.berth-table-row{
+  display: flex;
+  align-items: center;
+  height: 70px;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+.berth-table-header-item, .berth-table-content-item{
+  width: 45%;
+  text-align: left;
+}
+.berth-table-header-availability, .berth-table-content-availability{
+  width: 15%;
+  text-align: center;
+}
+.berth-table-header-action, .berth-table-content-action{
+  margin-left: 5%;
+  width: 35%;
+  text-align: center;
+}
+.berth-table-content-item-berth-name{
+  font-size: 1.5em;
+}
+.berth-table-content-item-berth-equipments{
+  font-size: 1em;
+}
+.berth-table-content-availability{
+  font-size: 1.5em;
+  height: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1em;
+}
+.berth-table-content-availability-available{
+  background-color: lightgreen;
+  color: green;
+  border: green;
+}
+.berth-table-content-availability-occupied{
+  background-color: red;
+  color: white;
+  border: white;
+}
+.berth-table-content-action{
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.berth-table-content-set-vessel{
+  height: 100%;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+.berth-table-content-vesselDD{
+  font-size: 1.2em;
+  height: 2em;
+  width: 50%;
+  margin-right: 10%;
+  text-align: center;
+}
+.berth-table-content-action-button{
+  font-size: 1.2em;
+  background-color: lightgreen;
+  border: none;
+  border-radius: 5px;
+  height: 2em;
+  width: 20%;
+}
+.berth-table-content-action-current-vessel{
+  height: 2em;
+  font-size: 1.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
