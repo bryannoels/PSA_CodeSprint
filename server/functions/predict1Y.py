@@ -102,28 +102,17 @@ print("Mean Squared Error (MSE):", mse_gross_tonnage)
 print("Root Mean Squared Error (RMSE):", rmse_gross_tonnage)
 print("R-squared (R²):", r2_gross_tonnage)
 
-# Split the data into training and testing sets (e.g., 80% training, 20% testing)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-# Train the model for number_of_vessels on the training data
 model_number_of_vessels.fit(X_train, y_train)
-
-# Train the model for gross_tonnage on the training data
 model_gross_tonnage.fit(X_train, data.loc[X_train.index, 'gross_tonnage'])
-
-# Make predictions on the testing data for number_of_vessels
 out_of_sample_predictions_number_of_vessels = model_number_of_vessels.predict(X_test)
-
-# Make predictions on the testing data for gross_tonnage
 out_of_sample_predictions_gross_tonnage = model_gross_tonnage.predict(X_test)
 
-# Calculate evaluation metrics for the testing data for number_of_vessels
 mae_test_number_of_vessels = mean_absolute_error(y_test, out_of_sample_predictions_number_of_vessels)
 mse_test_number_of_vessels = mean_squared_error(y_test, out_of_sample_predictions_number_of_vessels)
 rmse_test_number_of_vessels = np.sqrt(mse_test_number_of_vessels)
 r2_test_number_of_vessels = r2_score(y_test, out_of_sample_predictions_number_of_vessels)
 
-# Calculate evaluation metrics for the testing data for gross_tonnage
 mae_test_gross_tonnage = mean_absolute_error(data.loc[X_test.index, 'gross_tonnage'], out_of_sample_predictions_gross_tonnage)
 mse_test_gross_tonnage = mean_squared_error(data.loc[X_test.index, 'gross_tonnage'], out_of_sample_predictions_gross_tonnage)
 rmse_test_gross_tonnage = np.sqrt(mse_test_gross_tonnage)
