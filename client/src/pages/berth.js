@@ -8,59 +8,43 @@ function Berth() {
     const [vesselData, setVesselData] = useState([]);
     const [vesselDD, setVesselDD] = useState("");
     useEffect(() => {
-        const fetchBerthData = async () => {
+        const fetchData = async () => {
             try {
-                const response = await fetch('/data/berthAvailability.csv');
-                const csvData = await response.text();
-                if (!response.ok) {
-                    throw new Error(`Failed to fetch: ${response.status} ${response.statusText}`);
+                // Fetch berthAvailability data
+                const berthResponse = await fetch('http://localhost:8000/berthAvailability'); // Update the URL
+                if (!berthResponse.ok) {
+                    throw new Error(`Failed to fetch berthAvailability: ${berthResponse.status} ${berthResponse.statusText}`);
                 }
-                Papa.parse(csvData, {
-                    header: true, // Treat the first row as headers
-                    dynamicTyping: true, // Automatically detect numeric values
-                    complete: (result) => {
-                      if (Array.isArray(result.data) && result.data.length > 0) {
-                        setBerthData(result.data);
-                        console.log(result.data);
-                        setLoading(false); // Data has been loaded
-                      } else {
-                        console.error('No data found in CSV file.');
-                      }
-                    },
-                  });
-          
+
+                // Parse berthAvailability JSON data
+                const berthJsonData = await berthResponse.json();
+                if (Array.isArray(berthJsonData) && berthJsonData.length > 0) {
+                    setBerthData(berthJsonData);
+                    setLoading(false);
+                } else {
+                    console.error('No data found in berthAvailability JSON response.');
+                }
+
+                // Fetch upcomingVessels data
+                const vesselResponse = await fetch('http://localhost:8000/upcomingVessels'); // Update the URL
+                if (!vesselResponse.ok) {
+                    throw new Error(`Failed to fetch upcomingVessels: ${vesselResponse.status} ${vesselResponse.statusText}`);
+                }
+
+                // Parse upcomingVessels JSON data
+                const vesselJsonData = await vesselResponse.json();
+                if (Array.isArray(vesselJsonData) && vesselJsonData.length > 0) {
+                    setVesselData(vesselJsonData);
+                } else {
+                    console.error('No data found in upcomingVessels JSON response.');
+                }
             } catch (err) {
                 console.error(err);
             }
-        }
-        const fetchVesselData = async () => {
-            try {
-                const response = await fetch('/data/upcomingVessels.csv');
-                const csvData = await response.text();
-                if (!response.ok) {
-                    throw new Error(`Failed to fetch: ${response.status} ${response.statusText}`);
-                }
-                Papa.parse(csvData, {
-                    header: true, // Treat the first row as headers
-                    dynamicTyping: true, // Automatically detect numeric values
-                    complete: (result) => {
-                      if (Array.isArray(result.data) && result.data.length > 0) {
-                        setVesselData(result.data);
-                        console.log(result.data);
-                        setLoading(false); // Data has been loaded
-                      } else {
-                        console.error('No data found in CSV file.');
-                      }
-                    },
-                  });
-          
-            } catch (err) {
-                console.error(err);
-            }
-        }
-        fetchBerthData();
-        fetchVesselData();
-    },[]);
+        };
+
+        fetchData();
+    }, []);
   return (
     <div className="berth">
         <div className="berth-table">

@@ -12,32 +12,27 @@ function Equipment() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('/data/cranesAndHandlingEquipments.csv');
-                const csvData = await response.text();
+                // Fetch equipment data
+                const response = await fetch('http://localhost:8000/cranesAndHandlingEquipments'); // Update the URL
                 if (!response.ok) {
-                    throw new Error(`Failed to fetch: ${response.status} ${response.statusText}`);
+                    throw new Error(`Failed to fetch equipment data: ${response.status} ${response.statusText}`);
                 }
-                Papa.parse(csvData, {
-                    header: true, // Treat the first row as headers
-                    dynamicTyping: true, // Automatically detect numeric values
-                    complete: (result) => {
-                      if (Array.isArray(result.data) && result.data.length > 0) {
-                        setData(result.data[0]);
-                        console.log(result.data);
-                        setLoading(false); // Data has been loaded
-                      } else {
-                        console.error('No data found in CSV file.');
-                      }
-                    },
-                  });
-          
+
+                // Parse equipment JSON data
+                const jsonData = await response.json();
+                if (jsonData) {
+                    setData(jsonData[0]);
+                    setLoading(false);
+                } else {
+                    console.error('No data found in equipment JSON response.');
+                }
             } catch (err) {
                 console.error(err);
             }
-        }
+        };
+
         fetchData();
-        
-    },[]);
+    }, []);
     console.log(data?data.cranes:null);
   return (
     <div className="equipment">
