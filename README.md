@@ -14,6 +14,8 @@ Our platform combines the power of XGBoost models and linear programming to prov
 
 ### Presentation Video
 https://youtu.be/XHOC4wkYYOU
+### Demo Video
+https://youtu.be/ujAii1SG9i4
 
 
 ### [Development](#development)
