@@ -2,6 +2,7 @@ import './App.css';
 import {useState} from 'react';
 import Analytics from './pages/analytics.js';
 import Berth from './pages/berth.js';
+import Equipment from './pages/equipment.js';
 
 function App() {
   const [activeTab, setActiveTab] = useState("Analytics");
@@ -15,6 +16,7 @@ function App() {
       <div className = "content">
         {activeTab === "Analytics" ? <Analytics/> : null }
         {activeTab === "Berth" ? <Berth/> : null }
+        {activeTab === "Equipment" ? <Equipment/> : null}
       </div>
     </div>
   );
