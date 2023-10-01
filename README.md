@@ -12,6 +12,10 @@ Our platform combines the power of XGBoost models and linear programming to prov
 - **Operational Cost Calculation**: Utilize linear programming to calculate and minimize operational costs based on provided data.
 - **User-friendly Interface**: A seamless and intuitive interface for easy integration and usage.
 
+### Presentation Video
+https://youtu.be/XHOC4wkYYOU
+
+
 ### [Development](#development)
 For local development or contributions, please refer to our [contributing section](#contributing).
 
@@ -23,7 +27,7 @@ For local development or contributions, please refer to our [contributing sectio
 ### [Running Hack2Win Locally](#running-hack2win-locally)
 ```sh
 git clone https://github.com/bryannoels/PSA_CodeSprint.git && cd PSA_CodeSprint
-pip install -r requirements.txt
+pip install pandas xgboost numpy matplotlib statsmodels scikit-learn
 npm install
 python openAPI.py
 python predict1y.py
