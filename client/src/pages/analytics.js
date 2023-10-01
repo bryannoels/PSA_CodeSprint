@@ -45,6 +45,15 @@ const Analytics = () => {
         else if (analyticsDD === "YTD") {
           response = await fetch('/data/vesselsYTD.csv');
         }
+        else if (analyticsDD === "future1Y") {
+          response = await fetch('/data/predictedVessels1Y.csv');
+        }
+        else if (analyticsDD === "future5Y") {
+          response = await fetch('/data/predictedVessels5Y.csv');
+        }
+        else if (analyticsDD === "futureAll") {
+          response = await fetch('/data/predictedVessels.csv');
+        }
         const csvData = await response.text();
         if (!response.ok) {
           throw new Error(`Failed to fetch: ${response.status} ${response.statusText}`);
@@ -143,6 +152,9 @@ const Analytics = () => {
                 <option value="all">All time</option>
                 <option value="1Y">Past 1 Year</option>
                 <option value="YTD">Year to Date</option>
+                <option value="future1Y">Future 1 year</option>
+                <option value="future5Y">Future 5 years</option>
+                <option value="futureAll">Future All</option>
               </select>
             </div>
           </div>
