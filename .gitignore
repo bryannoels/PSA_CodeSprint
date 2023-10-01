@@ -1,0 +1,9 @@
+server/functions/apiKey.py
+server/functions/myenv/bin
+server/functions/myenv/include
+server/functions/myenv/lib
+server/functions/myenv/share
+myenv/bin
+myenv
+.DS_Store
+
